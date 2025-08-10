@@ -65,7 +65,8 @@ export function filterPersons(persons: Person[], personType: 'user', criteria: P
 export function filterPersons(persons: Person[], personType: 'admin', criteria: Partial<Omit<Admin, 'type'>>): Admin[];
 
 // 2. Implementación común
-export function filterPersons(persons: Person[], personType: PersonType , criteria: Partial<Omit<Person, 'type'>>): Person[] {
+// El any no rompe porque el tipo de retorno es inferido por las sobrecargas
+export function filterPersons(persons: Person[], personType: PersonType , criteria: Partial<Omit<Person, 'type'>>): any {
     return persons.filter((person) => person.type === personType)
                   .filter((person) => {
                     let criteriaKeys = Object.keys(criteria) as (keyof typeof criteria)[];

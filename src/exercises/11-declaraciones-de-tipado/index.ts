@@ -1,4 +1,3 @@
-//decalraciones que estan en el siguiente ejericio 
 
 import {
     strReverse,
@@ -54,19 +53,22 @@ export const nameDecorators = [
 
 function logPerson(person: Person) {
     let additionalInformation: string = '';
+    
     if (isAdmin(person)) {
         additionalInformation = person.role;
     }
+
     if (isUser(person)) {
         additionalInformation = person.occupation;
     }
-    const randomNameDecorator = nameDecorators[
-        Math.round(Math.random() * (nameDecorators.length - 1))
-    ];
+
+    const numberOfDecorators = Math.round(Math.random() * (nameDecorators.length - 1))
+
+    const randomNameDecorator = nameDecorators[numberOfDecorators];
+
     const name = randomNameDecorator(person.name);
-    console.log(
-        ` - ${name}, ${person.age}, ${additionalInformation}`
-    );
+
+    console.log(` - ${name}, ${person.age}, ${additionalInformation}`);
 }
 
 ([] as Person[])

@@ -72,8 +72,20 @@ export type ApiResponse<T> = (
     }
 );
 
-export function promisify(arg: unknown): unknown {
-    return null;
+type CallbackBasedAsyncFunction<T> = (callback: (response : ApiResponse<T>) => void) => void
+type PromiseBasedAsyncFunction<T> = () => Promise<T>;
+
+
+export function promisify<T>(fn: CallbackBasedAsyncFunction<T>): PromiseBasedAsyncFunction<T> {
+    return () => new Promise<T>((resolve, reject) => {
+                fn((response) => {
+                    if (response.status === 'success') {
+                        resolve(response.data);
+                    } else {
+                        reject(new Error(response.error));
+                    }
+                });
+            });
 }
 
 const oldApi = {

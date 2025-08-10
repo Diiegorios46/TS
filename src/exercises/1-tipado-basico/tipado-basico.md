@@ -11,7 +11,6 @@ Todos los problemas relacionados con el GDPR se resolverán otro día. Esta ser�
  Dado los datos, define la interfaz `User` y úsala en consecuencia.
 
 
-
-
-
-
+## Comprension del ejercicio 
+Exportamos el tipo User para despues usarlo en un array objetos que son de tipo usuario ,
+se comprende que se tiene que tipar el objeto y que se agrega el [] para decirle a typescript 

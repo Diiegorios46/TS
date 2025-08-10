@@ -31,9 +31,7 @@ interface Admin {
     role: string;
 }
 
-export type PowerUser = {
-    type: 'powerUser';
-} & Omit<User, 'type'> & Omit<Admin, 'type'>;
+type PowerUser = unknown;
 
 export type Person = User | Admin | PowerUser;
 
